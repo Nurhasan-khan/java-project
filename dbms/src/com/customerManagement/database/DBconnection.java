@@ -15,11 +15,6 @@ public class DBconnection {
     private final static String DB_USER = System.getenv("DB_USER");
     private final static String DB_PASSWORD = System.getenv("DB_PASSWORD");
     private static Properties dbProperties;
-    static{
-        System.out.println(DB_URL);
-        System.out.println(DB_USER);
-        System.out.println(DB_PASSWORD);
-    }
 
     public static Supplier<Connection> getSupplierConnection = () -> {
         try {
