@@ -38,7 +38,12 @@ public non-sealed class  CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void updateCustomerDetails(int id, String... args) throws CustomerNotFoundException {
+    public void updateCustomerDetails(int id, String city , String state) throws CustomerNotFoundException {
+        Optional<CustomerDTO> customerDTO = Optional.ofNullable(customerRepository.findCustomer(id));
+        if(customerDTO.isPresent())
+            customerRepository.updateCustomerDetails(id,city,state);
+        else
+            throw new CustomerNotFoundException(CUSTOMER_NOT_FOUND);
 
     }
 

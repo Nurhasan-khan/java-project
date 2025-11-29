@@ -8,8 +8,10 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.util.List;
-import java.util.Objects;
 
+/**
+ * @author Nurhasan
+ */
 public final class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     public void saveCustomer(CustomerDTO customerDTO) {
@@ -50,7 +52,21 @@ public final class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public void updateCustomerDetails(int id, String... args) {
+    public void updateCustomerDetails(int id, String city,String state) {
+        String query = """
+                UPDATE customers SET city = ? , STATE = ?
+                WHERE customer_id = ?
+                """;
+        try (Connection connection = DBconnection.getSupplierConnection.get();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1,city);
+            preparedStatement.setString(2,state);
+            preparedStatement.setInt(3,id);
+            preparedStatement.executeUpdate();
+        }catch(Exception e){
+           throw new RuntimeException(e);
+        }
+
 
     }
 

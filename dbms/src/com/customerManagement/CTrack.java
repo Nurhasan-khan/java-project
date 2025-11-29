@@ -5,7 +5,6 @@ import com.customerManagement.entity.CustomerDTO;
 import com.customerManagement.service.CustomerService;
 import com.customerManagement.service.CustomerServiceImpl;
 import com.customerManagement.utility.Utility;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -38,12 +37,24 @@ public class CTrack {
                        CustomerDTO customerDTO = customerService.findCustomer(id);
                        System.out.println("Customer Details Found: " + customerDTO);
                    }
+                   case 3 ->{
+                       System.out.println("---- Update Customer Details ----");
+                       System.out.println("Enter customer ID: ");
+                       int id = scan.nextInt();
+                       scan.nextLine();
+                       System.out.println("Enter Customer's new city: ");
+                       String city = scan.nextLine();
+                       System.out.println("Enter Customer's new State: ");
+                       String state = scan.nextLine();
+                       customerService.updateCustomerDetails(id,city,state);
+                       System.out.println("Information Updated Successfully.");
+                   }
                }
 
 
            }while(Utility.wantToContinue(scan));
        } catch (Exception e) {
-           System.out.println(e.getMessage());;
+           System.out.println(e.getMessage());
        }
 
     }

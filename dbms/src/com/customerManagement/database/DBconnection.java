@@ -11,9 +11,9 @@ import java.util.function.Supplier;
  */
 public class DBconnection {
     private final static String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
-    private final static String DB_URL = "jdbc:mysql://localhost:3306/online_store";
+    private final static String DB_URL = "jdbc:mysql://yamanote.proxy.rlwy.net:55726/railway?useSSL=true";
     private final static String DB_USER = "root";
-    private final static String DB_PASSWORD = "Nurhasan@06";
+    private final static String DB_PASSWORD = "VIcnayhvvGGjKxyZngxOcDLOzYtUffiK";
     private static Properties dbProperties;
 
 
@@ -36,21 +36,5 @@ public class DBconnection {
 
     }
 
-//    public static Connection getConnection() {
-//        Connection connection = null;
-//        Properties dbProperties = new Properties();
-//        dbProperties.put("user", DB_USER);
-//        dbProperties.put("password", DB_PASSWORD);
-//        try {
-//            Class.forName(DB_DRIVER);
-//            connection = DriverManager.getConnection(DB_URL, dbProperties);
-//        } catch (ClassNotFoundException | SQLException e) {
-//            System.out.println(e.getMessage());
-//            return null;
-//        } finally {
-//            dbProperties.clear();
-//        }
-//        return connection;
-//    }
 }
 
